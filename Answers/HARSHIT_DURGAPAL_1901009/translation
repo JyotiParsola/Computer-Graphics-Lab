@@ -1,0 +1,16 @@
+#include<graphics.h>
+#include<stdio.h>
+int main()
+{
+	int P[2] = {30, 40}; // coordinates of point
+	int T[] = {5, 5}; // translation factor
+	int gd = DETECT, gm, errorcode;
+	initgraph (&gd, &gm, "");
+	putpixel (P[0], P[1],YELLOW);
+	P[0] = P[0] + T[0];
+	P[1] = P[1] + T[1];
+	putpixel (P[0], P[1],GREEN);
+	getch();
+	closegraph();
+	return 0;
+}
