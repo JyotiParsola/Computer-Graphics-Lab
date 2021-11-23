@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <graphics.h>
+int main( ){
+int gd=DETECT,gm;
+int t[3][3]={1,0,0,0,1,0,0,0,1},a[3][3],r[3][3]={0},i,j,k;
+printf("Enter value of x1 and y1: "); scanf("%d %d", &a[0][0], &a[0][1]);
+printf("Enter value of x2 and y2: "); scanf("%d %d", &a[1][0], &a[1][1]);
+printf("Enter value of x3 and y3: "); scanf("%d %d", &a[2][0], &a[2][1]);
+printf("Enter value of tx and ty: "); scanf("%d %d", &t[2][0], &t[2][1]);
+a[0][2]=a[1][2]=a[2][2]=1;
+for(i=0;i<3;i++){
+for(j=0;j<3;j++){
+for(k=0;k<3;k++){
+r[i][j] = r[i][j] + (a[i][k]*t[k][j]);
+}
+}
+}
+initgraph(&gd,&gm,"NULL");
+line(a[0][0],a[0][1],a[1][0],a[1][1]);
+line(a[1][0],a[1][1],a[2][0],a[2][1]);
+line(a[0][0],a[0][1],a[2][0],a[2][1]);
+outtext("- - - Before Translation - - -");
+delay(5000);
+cleardevice();
+line(r[0][0],r[0][1],r[1][0],r[1][1]);
+line(r[1][0],r[1][1],r[2][0],r[2][1]);
+line(r[0][0],r[0][1],r[2][0],r[2][1]);
+outtext("- - - After Translation - - -");
+delay(5000);closegraph( );return 0 ;}
